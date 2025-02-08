@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iap_quick/iap_quick.dart';
 
 void main() {
   runApp(const MyApp());
