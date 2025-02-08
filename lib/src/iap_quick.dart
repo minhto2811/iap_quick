@@ -45,6 +45,7 @@ class IAPQuick {
       onError: onError,
       cancelOnError: cancelOnError,
     );
+    restorePurchases();
     _finishAllTransactions();
   }
 
