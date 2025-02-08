@@ -1,7 +1,7 @@
 name: iap_quick
 description: "A new Flutter plugin project."
 version: 0.0.1
-homepage:
+homepage: https://github.com/minhto2811/iap_quick.git
 
 environment:
   sdk: ^3.6.2
