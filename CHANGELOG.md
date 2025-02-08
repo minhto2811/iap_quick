@@ -6,3 +6,8 @@
 ## 0.0.2
 
 * TODO: Fix the issue where the listening stream does not work on startup.
+
+## 0.0.3
+
+* TODO: Add a feature to check if ProductDetail has a free trial.
+
