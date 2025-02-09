@@ -11,3 +11,8 @@
 
 * TODO: Add a feature to check if ProductDetail has a free trial.
 
+
+## 0.0.4
+
+* TODO: Update.
+

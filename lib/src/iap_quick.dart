@@ -6,19 +6,14 @@ class IAPQuick {
   Future<bool> isAvailable() async =>
       await InAppPurchase.instance.isAvailable();
 
-  Future<List<ProductDetails>> getProducts({
+  Future<ProductDetailsResponse> getProducts({
     required Set<String> ids,
     void Function(List<String>)? notFoundIDs,
-  }) async {
-    final ProductDetailsResponse response =
-        await InAppPurchase.instance.queryProductDetails(ids);
-    notFoundIDs?.call(response.notFoundIDs);
-    return response.productDetails;
-  }
+  }) async =>
+      await InAppPurchase.instance.queryProductDetails(ids);
 
-  Future<void> restorePurchases() async {
-    await InAppPurchase.instance.restorePurchases();
-  }
+  Future<void> restorePurchases() async =>
+      await InAppPurchase.instance.restorePurchases();
 
   Future<void> buyConsumable(ProductDetails productDetails) async {
     final PurchaseParam purchaseParam =
@@ -41,7 +36,10 @@ class IAPQuick {
     await _reloadTransactions();
     _subscription = InAppPurchase.instance.purchaseStream.listen(
       onData,
-      onDone: onDone,
+      onDone: () {
+        _subscription?.cancel();
+        onDone?.call();
+      },
       onError: onError,
       cancelOnError: cancelOnError,
     );

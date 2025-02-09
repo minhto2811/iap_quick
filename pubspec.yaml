@@ -1,6 +1,6 @@
 name: iap_quick
 description: "This plugin makes integrating **In-App Purchase** in your Flutter app easy and fast. With a simple API, multi-platform support, and secure payment processing, this plugin lets you focus on user experience without worrying about complex technical issues."
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/minhto2811/iap_quick.git
 
 environment:
