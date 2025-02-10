@@ -16,3 +16,20 @@
 
 * TODO: Update.
 
+## 0.0.5
+
+* TODO: Update.
+
+## 0.0.6
+
+* TODO: Add delay.
+
+## 0.0.7
+
+* TODO: Update.
+
+## 0.0.8
+
+* TODO: Fix: `isRestore = true` not working.
+
+

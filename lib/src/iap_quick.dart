@@ -12,7 +12,7 @@ class IAPQuick {
   }) async =>
       await InAppPurchase.instance.queryProductDetails(ids);
 
-  Future<void> restorePurchases() async =>
+  Future<void> restorePurchases({int retries = 3}) async =>
       await InAppPurchase.instance.restorePurchases();
 
   Future<void> buyConsumable(ProductDetails productDetails) async {
@@ -29,11 +29,13 @@ class IAPQuick {
 
   void listen({
     required void Function(List<PurchaseDetails>) onData,
+    int millisecondsDelay = 0,
+    bool isRestore = false,
     void Function()? onDone,
     Function? onError,
     bool? cancelOnError,
   }) async {
-    await _reloadTransactions();
+    assert(millisecondsDelay >= 0, 'milliseconds must be >= 0');
     _subscription = InAppPurchase.instance.purchaseStream.listen(
       onData,
       onDone: () {
@@ -43,32 +45,26 @@ class IAPQuick {
       onError: onError,
       cancelOnError: cancelOnError,
     );
-    restorePurchases();
-    _finishAllTransactions();
-  }
-
-  Future<void> _reloadTransactions() async {
-    if (Platform.isIOS) {
-      SKPaymentQueueWrapper wrapper = SKPaymentQueueWrapper();
-      List<SKPaymentTransactionWrapper> transactions =
-          await wrapper.transactions();
-      transactions.forEach((transaction) async {
-        if (transaction.transactionState ==
-            SKPaymentTransactionStateWrapper.purchased) {
-          await wrapper.finishTransaction(transaction);
-        }
-      });
+    await _finishAllTransactions();
+    if (!isRestore) return;
+    await Future.delayed(Duration(milliseconds: millisecondsDelay));
+    try {
+      restorePurchases();
+      restorePurchases();
+      restorePurchases();
+    } catch (e) {
+      //
     }
   }
 
   Future<void> _finishAllTransactions() async {
-    if (Platform.isIOS) {
-      SKPaymentQueueWrapper wrapper = SKPaymentQueueWrapper();
-      List<SKPaymentTransactionWrapper> transactions =
-          await wrapper.transactions();
-      transactions.forEach(
-          (transaction) async => await wrapper.finishTransaction(transaction));
-    }
+    if (!Platform.isIOS) return;
+    final wrapper = SKPaymentQueueWrapper();
+    final transactions = await wrapper.transactions();
+    await Future.wait(transactions
+        .where((t) =>
+            t.transactionState == SKPaymentTransactionStateWrapper.purchased)
+        .map((t) => wrapper.finishTransaction(t)));
   }
 
   Future<void> dispose() async {

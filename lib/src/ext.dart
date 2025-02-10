@@ -8,3 +8,11 @@ extension ProductDetailsExt on ProductDetails {
     return (this as AppStoreProductDetails).skProduct.introductoryPrice != null;
   }
 }
+
+extension PurchaseDetailsExt on PurchaseDetails{
+  Future<void> get completePurchase async {
+    if (pendingCompletePurchase) {
+      await InAppPurchase.instance.completePurchase(this);
+    }
+  }
+}
