@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'iap_quick'
-  s.version          = '0.0.8'
+  s.version          = '0.0.10'
   s.summary          = 'This plugin makes integrating **In-App Purchase** in your Flutter app easy and fast. With a simple API, multi-platform support, and secure payment processing, this plugin lets you focus on user experience without worrying about complex technical issues.'
   s.description      = <<-DESC
 A new Flutter plugin project.

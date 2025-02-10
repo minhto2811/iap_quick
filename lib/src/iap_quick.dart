@@ -29,7 +29,7 @@ class IAPQuick {
 
   void listen({
     required void Function(List<PurchaseDetails>) onData,
-    int millisecondsDelay = 0,
+    int millisecondsDelay = 1000,
     bool isRestore = false,
     void Function()? onDone,
     Function? onError,
@@ -50,10 +50,8 @@ class IAPQuick {
     await Future.delayed(Duration(milliseconds: millisecondsDelay));
     try {
       restorePurchases();
-      restorePurchases();
-      restorePurchases();
     } catch (e) {
-      //
+      debugPrint('IAP_QUICK: Error occurred during the data restore process');
     }
   }
 
@@ -61,10 +59,7 @@ class IAPQuick {
     if (!Platform.isIOS) return;
     final wrapper = SKPaymentQueueWrapper();
     final transactions = await wrapper.transactions();
-    await Future.wait(transactions
-        .where((t) =>
-            t.transactionState == SKPaymentTransactionStateWrapper.purchased)
-        .map((t) => wrapper.finishTransaction(t)));
+    await Future.wait(transactions.map((t) => wrapper.finishTransaction(t)));
   }
 
   Future<void> dispose() async {
