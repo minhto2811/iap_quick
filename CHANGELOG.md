@@ -1,22 +1,20 @@
-## 0.0.1
+## 0.0.11
 
-* TODO: Describe initial release.
+* Update
 
+## 0.0.10
 
-## 0.0.2
+* Update `int millisecondsDelay = 1000(default)`
 
-* TODO: Fix the issue where the listening stream does not work on startup.
+## 0.0.9
 
-## 0.0.3
+* Update dependencies
 
-* TODO: Add a feature to check if ProductDetail has a free trial.
+## 0.0.8
 
+* TODO: Fix: `isRestore = true` not working.
 
-## 0.0.4
-
-* TODO: Update.
-
-## 0.0.5
+## 0.0.7
 
 * TODO: Update.
 
@@ -24,12 +22,22 @@
 
 * TODO: Add delay.
 
-## 0.0.7
+## 0.0.5
 
 * TODO: Update.
 
-## 0.0.8
+## 0.0.4
 
-* TODO: Fix: `isRestore = true` not working.
+* TODO: Update.
 
+## 0.0.3
 
+* TODO: Add a feature to check if ProductDetail has a free trial.
+
+## 0.0.2
+
+* TODO: Fix the issue where the listening stream does not work on startup.
+
+## 0.0.1
+
+* TODO: Describe initial release.
