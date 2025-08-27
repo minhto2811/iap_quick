@@ -1,6 +1,6 @@
 name: iap_quick
 description: "This plugin makes integrating **In-App Purchase** in your Flutter app easy and fast. With a simple API, multi-platform support, and secure payment processing, this plugin lets you focus on user experience without worrying about complex technical issues."
-version: 0.0.11
+version: 0.0.12
 homepage: https://github.com/minhto2811/iap_quick.git
 
 environment:
@@ -10,8 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  in_app_purchase: ^3.2.1
-  in_app_purchase_storekit: ^0.3.21
+  in_app_purchase: ^3.2.3
+  in_app_purchase_storekit: ^0.4.4
 
 dev_dependencies:
   flutter_test:
@@ -33,13 +33,6 @@ flutter:
   # This is required for using `dart:ffi`.
   # All these are used by the tooling to maintain consistency when
   # adding or updating assets for this project.
-  plugin:
-    platforms:
-      android:
-        package: com.mxgk.iap_quick
-        pluginClass: IapQuickPlugin
-      ios:
-        pluginClass: IapQuickPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

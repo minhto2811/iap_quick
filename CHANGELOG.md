@@ -1,3 +1,7 @@
+## 0.0.12
+
+* Update
+
 ## 0.0.11
 
 * Update
@@ -9,7 +13,6 @@
 ## 0.0.3
 
 * TODO: Add a feature to check if ProductDetail has a free trial.
-
 
 ## 0.0.4
 
