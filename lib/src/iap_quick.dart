@@ -38,7 +38,7 @@ class IAPQuick {
     int millisecondsDelay = 1000,
     bool isRestore = false,
     void Function()? onDone,
-    void Function(Object error, [StackTrace? stackTrace])? onError,
+    void Function(Object error)? onError,
     bool? cancelOnError,
   }) async {
     assert(millisecondsDelay >= 0, 'milliseconds must be >= 0');
