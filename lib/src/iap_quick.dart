@@ -1,6 +1,15 @@
 part of 'core.dart';
 
 class IAPQuick {
+  static IAPQuick? _instance;
+
+  factory IAPQuick() {
+    _instance ??= IAPQuick._();
+    return _instance!;
+  }
+
+  IAPQuick._();
+
   StreamSubscription<List<PurchaseDetails>>? _subscription;
 
   Future<bool> isAvailable() async =>
@@ -29,7 +38,7 @@ class IAPQuick {
     int millisecondsDelay = 1000,
     bool isRestore = false,
     void Function()? onDone,
-    Function? onError,
+    void Function(Object error, [StackTrace? stackTrace])? onError,
     bool? cancelOnError,
   }) async {
     assert(millisecondsDelay >= 0, 'milliseconds must be >= 0');
